@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/batteryLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="--"
+        android:textSize="60sp"
+        android:textColor="@color/good_green"
+        android:gravity="center"
+        android:layout_marginTop="32dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="--°C"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackground" />
+
+        <TextView
+            android:id="@+id/voltage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-- mV"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackground" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/health"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="--"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackground" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="--"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackground" />
+    </LinearLayout>
+
+    <com.batterycare.app.ui.ChargingCurveView
+        android:id="@+id/chargingCurveView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/surface" />
+
+    <TextView
+        android:id="@+id/diagnosis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chẩn đoán: Chờ dữ liệu..."
+        android:textSize="16sp"
+        android:textColor="@color/text_secondary"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/surface" />
+</LinearLayout>
