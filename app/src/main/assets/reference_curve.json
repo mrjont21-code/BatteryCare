@@ -1,0 +1,64 @@
+{
+  "batteryReferenceCurves": [
+    {
+      "temperature": 20,
+      "voltage": 4200,
+      "health": "excellent",
+      "degradationRate": 0.5
+    },
+    {
+      "temperature": 25,
+      "voltage": 4150,
+      "health": "good",
+      "degradationRate": 1.0
+    },
+    {
+      "temperature": 30,
+      "voltage": 4100,
+      "health": "fair",
+      "degradationRate": 2.0
+    },
+    {
+      "temperature": 35,
+      "voltage": 4050,
+      "health": "poor",
+      "degradationRate": 3.5
+    },
+    {
+      "temperature": 40,
+      "voltage": 4000,
+      "health": "critical",
+      "degradationRate": 5.0
+    }
+  ],
+  "chargeProfiles": [
+    {
+      "profileName": "NormalCharge",
+      "targetVoltage": 4200,
+      "chargeCurrent": 1000,
+      "optimalTemperature": 25,
+      "description": "Standard charging profile for everyday use"
+    },
+    {
+      "profileName": "FastCharge",
+      "targetVoltage": 4200,
+      "chargeCurrent": 2000,
+      "optimalTemperature": 20,
+      "description": "Fast charging profile (use sparingly)"
+    },
+    {
+      "profileName": "ConservativeCharge",
+      "targetVoltage": 4100,
+      "chargeCurrent": 500,
+      "optimalTemperature": 25,
+      "description": "Conservative charging to extend battery lifespan"
+    }
+  ],
+  "healthThresholds": {
+    "excellent": {"minCapacity": 95, "maxTemperature": 25},
+    "good": {"minCapacity": 80, "maxTemperature": 30},
+    "fair": {"minCapacity": 60, "maxTemperature": 35},
+    "poor": {"minCapacity": 40, "maxTemperature": 40},
+    "critical": {"minCapacity": 0, "maxTemperature": 50}
+  }
+}

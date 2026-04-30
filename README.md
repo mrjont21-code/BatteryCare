@@ -1,111 +1,133 @@
-# BatteryCare - Smart Battery Monitor for Android
+# BatteryCare
 
-## Overview
-BatteryCare is a comprehensive Android application for real-time battery monitoring, charging curve analysis, and battery health diagnostics. The app provides detailed battery information, compares actual charging curves against reference curves, and sends alerts for abnormal conditions.
+BatteryCare is an Android application designed to monitor and optimize battery health and performance. Built with Kotlin, it provides real-time battery monitoring, health assessment, and optimization recommendations.
 
 ## Features
 
-### 1. Real-Time Battery Monitoring
-- Battery level (%)
-- Voltage (mV)
-- Temperature (°C)
-- Current (mA)
-- Charge status (Charging/Discharging/Full)
-- Battery health (Cold/Cool/Good/Overheat/Failure)
-- Battery technology (Li-ion/Li-poly)
-- Estimated remaining capacity (%)
-
-### 2. Charging Curve Visualization
-- Reference charging curve (dashed line) from asset JSON file
-- Actual charging curve (solid line) updating in real-time
-- Custom Canvas-based chart view
-- Lightweight implementation with max 100 data points per session
-
-### 3. Battery Diagnostics
-- Comparison of actual vs reference charging curves
-- Detection of slow charging, voltage anomalies, overheating
-- Battery health tracking and cycle count estimation
-- Clear Vietnamese diagnosis messages
-
-### 4. Notifications & Alerts
-- Full charge notification (100%)
-- Overheating alert (> 45°C)
-- Abnormal charging detection
-- Persistent foreground service notification
-- Custom sound alerts
-
-### 5. Data Persistence
-- Room database for storing battery data
-- Charging session logging
-- Checkpoint logger for crash recovery
+- **Real-time Battery Monitoring**: Track battery percentage, temperature, voltage, and health status
+- **Battery Health Assessment**: Evaluate battery condition based on multiple factors
+- **Battery Optimization**: Get recommendations and tools to extend battery lifespan
+- **Historical Data Tracking**: Store and analyze battery data over time using Room Database
+- **Material Design UI**: Modern, intuitive user interface with Material Design 3
+- **Dark Mode Support**: Comfortable viewing in low-light environments
+- **Settings & Customization**: Personalize your experience with various options
 
 ## Technical Stack
-- **Language:** Kotlin
-- **Min SDK:** 35
-- **Target SDK:** 35
-- **Architecture:** MVVM
-- **Database:** Room
-- **UI Framework:** AndroidX
+
+- **Language**: Kotlin 1.9.22
+- **Android SDK**: Target API 35, Min API 35
+- **Build System**: Gradle 8.4
+- **Android Gradle Plugin**: 8.2.0
+- **Architecture**: MVVM with LiveData and ViewModel
+- **Database**: Room 2.6.1
+- **UI Framework**: AndroidX, Material Components 1.11.0
 
 ## Project Structure
+
 ```
-BatteryCare/
-├── app/src/main/
-│   ├── java/com/batterycare/app/
-│   │   ├── data/          # Room database entities and DAO
-│   │   ├── repository/    # Data repository
-│   │   ├── viewmodel/     # ViewModel
-│   │   ├── service/       # Foreground battery monitor service
-│   │   ├── receiver/      # Broadcast receivers
-│   │   ├── ui/            # UI components and MainActivity
-│   │   └── util/          # Utilities (BatteryUtil, SoundPlayer, etc.)
-│   ├── res/
-│   │   ├── layout/        # XML layouts
-│   │   ├── values/        # String resources (Vietnamese)
-│   │   └── mipmap/        # Icons
+app/src/main/
+├── kotlin/com/batterycare/app/
+│   ├── BatteryCareApplication.kt
+│   ├── ui/
+│   │   ├── MainActivity.kt
+│   │   ├── BatteryDetailActivity.kt
+│   │   ├── SettingsActivity.kt
+│   │   └── viewmodel/
+│   │       └── BatteryViewModel.kt
+│   └── data/
+│       ├── database/
+│       │   ├── BatteryCareDatabase.kt
+│       │   └── dao/
+│       │       └── BatteryDao.kt
+│       └── model/
+│           └── BatteryRecord.kt
+├── res/
+│   ├── layout/
+│   ├── values/
 │   └── assets/
-│       └── reference_curve.json  # Reference charging curve data
-├── build.gradle.kts
-└── settings.gradle.kts
+│       └── reference_curve.json
+└── AndroidManifest.xml
 ```
 
-## Usage
+## Build & Compile
 
-### Building the App
-1. Open the project in Android Studio
-2. Sync Gradle files
-3. Build APK: `Build > Build Bundle(s) / APK(s) > Build APK(s)`
+### Prerequisites
+- Android Studio Flamingo or later
+- Java Development Kit (JDK) 17
+- Android SDK 35
 
-### Running on Device
-1. Connect Android device with SDK 35
-2. Run > Run 'app'
-3. Grant necessary permissions when prompted
+### Build Steps
 
-## Permissions Required
-- `BATTERY_STATS` - Read battery information
-- `POST_NOTIFICATIONS` - Send notifications
-- `FOREGROUND_SERVICE` - Run monitoring service
-- `RECEIVE_BOOT_COMPLETED` - Auto-start after device boot
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mrjont21-code/BatteryCare.git
+   cd BatteryCare
+   ```
 
-## File Size Constraints
-- Each Kotlin file: < 150 lines ✓
-- Total app RAM usage: < 3GB ✓
+2. **Build the project**
+   ```bash
+   ./gradlew build
+   ```
 
-## UI Features
-- Full-screen immersive mode (swipe to reveal system UI)
-- Dark theme (#121212 background)
-- Green accents for good status, red for warnings
-- Touch-sensitive metric cards with detail popups
-- Minimalist design with easy-to-read fonts
-- All user-facing text in Vietnamese
+3. **Run the app**
+   ```bash
+   ./gradlew installDebug
+   ```
 
-## Language
-- All UI text: Vietnamese
-- Code comments: English
-- String resources: Spanish translations for i18n support
+4. **Build release APK**
+   ```bash
+   ./gradlew assembleRelease
+   ```
 
-## Version
-v1.0
+## Gradle Configuration
+
+- **Gradle Version**: 8.4
+- **AGP Version**: 8.2.0
+- **Kotlin Version**: 1.9.22
+- **Java Compatibility**: Java 17
+
+All dependencies are pinned to specific compatible versions as specified in `app/build.gradle.kts`.
+
+## Permissions
+
+- `android.permission.BATTERY_STATS` - Read battery statistics
+- `android.permission.ACCESS_FINE_LOCATION` - For location-based battery optimization
+- `android.permission.INTERNET` - For cloud backup features
+- `android.permission.ACCESS_NETWORK_STATE` - Check network connectivity
+
+## Database Schema
+
+### BatteryRecord Entity
+- `id` (PrimaryKey, AutoIncrement): Unique identifier
+- `percentage`: Battery percentage (0-100)
+- `health`: Battery health status
+- `temperature`: Battery temperature in Celsius
+- `voltage`: Battery voltage in millivolts
+- `isCharging`: Charging status boolean
+- `timestamp`: Record creation timestamp
+
+## Contributing
+
+Contributions are welcome! Please follow these guidelines:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## License
-MIT
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Author
+
+**mrjont21-code**
+- GitHub: [@mrjont21-code](https://github.com/mrjont21-code)
+
+## Support
+
+For issues, questions, or suggestions, please open an issue on the GitHub repository.
+
+---
+
+**Last Updated**: 2026-04-30
+**Version**: 1.0.0

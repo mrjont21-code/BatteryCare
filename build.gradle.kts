@@ -1,56 +1,11 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
+    id("com.android.application") version "8.2.0" apply false
+    id("com.android.library") version "8.2.0" apply false
+    kotlin("android") version "1.9.22" apply false
+    kotlin("kapt") version "1.9.22" apply false
+    id("com.google.devtools.ksp") version "1.9.22-1.0.17" apply false
 }
 
-android {
-    namespace = "com.batterycare.app"
-    compileSdk = 35
-
-    defaultConfig {
-        applicationId = "com.batterycare.app"
-        minSdk = 35
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
-    buildFeatures {
-        viewBinding = true
-    }
-}
-
-dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
-    implementation(libs.androidx.work.runtime.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+tasks.register("clean", Delete::class) {
+    delete(rootProject.buildDir)
 }

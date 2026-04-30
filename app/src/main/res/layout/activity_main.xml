@@ -1,100 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".ui.MainActivity">
 
     <TextView
-        android:id="@+id/batteryLevel"
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="--"
-        android:textSize="60sp"
-        android:textColor="@color/good_green"
-        android:gravity="center"
-        android:layout_marginTop="32dp" />
+        android:text="@string/app_name"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple_500"
+        android:layout_marginBottom="24dp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_battery_percentage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/battery_percentage"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <ProgressBar
+                android:id="@+id/pb_battery"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:progress="75" />
+
+            <TextView
+                android:id="@+id/tv_battery_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/battery_status"
+                android:textSize="16sp"
+                android:textColor="@color/gray_dark"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tv_battery_health"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/battery_health"
+                android:textSize="16sp"
+                android:textColor="@color/gray_dark"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tv_battery_temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/battery_temperature"
+                android:textSize="16sp"
+                android:textColor="@color/gray_dark"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tv_battery_voltage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/battery_voltage"
+                android:textSize="16sp"
+                android:textColor="@color/gray_dark"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
-        android:gravity="center_horizontal">
+        android:spacing="8dp">
 
-        <TextView
-            android:id="@+id/temperature"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_details"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="--°C"
-            android:textSize="18sp"
-            android:textColor="@color/text_primary"
-            android:gravity="center"
-            android:padding="8dp"
-            android:background="?attr/selectableItemBackground" />
+            android:text="@string/button_details"
+            android:layout_marginEnd="4dp" />
 
-        <TextView
-            android:id="@+id/voltage"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_optimize"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="-- mV"
-            android:textSize="18sp"
-            android:textColor="@color/text_primary"
-            android:gravity="center"
-            android:padding="8dp"
-            android:background="?attr/selectableItemBackground" />
+            android:text="@string/button_optimize"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_settings"
+            android:layout_marginStart="4dp" />
+
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:gravity="center_horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp">
 
-        <TextView
-            android:id="@+id/health"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/ll_battery_history"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="--"
-            android:textSize="16sp"
-            android:textColor="@color/text_primary"
-            android:gravity="center"
-            android:padding="8dp"
-            android:background="?attr/selectableItemBackground" />
+            android:orientation="vertical" />
 
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="--"
-            android:textSize="16sp"
-            android:textColor="@color/text_primary"
-            android:gravity="center"
-            android:padding="8dp"
-            android:background="?attr/selectableItemBackground" />
-    </LinearLayout>
+    </ScrollView>
 
-    <com.batterycare.app.ui.ChargingCurveView
-        android:id="@+id/chargingCurveView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/surface" />
-
-    <TextView
-        android:id="@+id/diagnosis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Chẩn đoán: Chờ dữ liệu..."
-        android:textSize="16sp"
-        android:textColor="@color/text_secondary"
-        android:padding="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/surface" />
 </LinearLayout>

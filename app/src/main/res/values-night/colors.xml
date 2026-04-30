@@ -7,9 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray_light">#FFF5F5F5</color>
-    <color name="gray_dark">#FF333333</color>
-    <color name="green_health">#FF4CAF50</color>
-    <color name="yellow_warning">#FFFFC107</color>
-    <color name="red_critical">#FFF44336</color>
+    <color name="gray_light">#FF1F1F1F</color>
+    <color name="gray_dark">#FFCCCCCC</color>
+    <color name="green_health">#FF81C784</color>
+    <color name="yellow_warning">#FFFFB74D</color>
+    <color name="red_critical">#FFE57373</color>
 </resources>
